@@ -1,0 +1,42 @@
+class Node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+class Linkedlist:
+  def __init__(self):
+    self.head=None  
+  def insert(self,data):
+    new_node=Node(data)
+    if self.head is None :
+      self.head=new_node
+    else:
+      current=self.head
+      while current.next is not None:
+        current=current.next
+      current.next=new_node
+  def find_max(self):
+      if self.head is None:
+        return None
+      max_value=self.head.data
+      current=self.head
+      while current is not None:
+        if current.data > max_value:
+          max_value=current.data
+        current=current.next
+      return max_value
+  def display(self):
+      values=[]
+      current=self.head
+      while current is not None:
+        values.append(current.data)
+        current=current.next
+      return values
+
+sequence = [5, 8, 9, 4, 7, 10]
+linked_list = Linkedlist()  
+
+for number in sequence:
+    linked_list.insert(number)
+
+print("Linked List:", linked_list.display())
+print("The largest number in the linked list is:", linked_list.find_max())
